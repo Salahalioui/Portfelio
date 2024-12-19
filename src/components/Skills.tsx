@@ -15,7 +15,7 @@ import {
   SiVite,
   SiNextdotjs,
 } from 'react-icons/si'
-import { useEffect, useRef, useMemo } from 'react'
+import { useRef, useMemo } from 'react'
 
 const Skills = () => {
   const sectionRef = useRef<HTMLElement>(null)
