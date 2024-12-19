@@ -53,10 +53,10 @@ export const criticalAssets: PreloadConfig[] = [
     type: 'font',
     crossOrigin: true,
   },
-  /*{
-    url: '/assets/images/hero-image.jpg',
+  {
+    url: '/assets/images/hero-image.svg',
     type: 'image',
-  },*/
+  },
   // Add other critical assets here
 ]
 

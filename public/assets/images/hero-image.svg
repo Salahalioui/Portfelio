@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="1920" height="1080" version="1.1" viewBox="0 0 1920 1080" xmlns="http://www.w3.org/2000/svg">
+ <defs>
+  <linearGradient id="a" x1="0%" x2="100%" y1="0%" y2="100%">
+   <stop stop-color="#242424" offset="0"/>
+   <stop stop-color="#323232" offset="1"/>
+  </linearGradient>
+ </defs>
+ <rect width="1920" height="1080" fill="url(#a)"/>
+ <g fill="none" stroke="#646cff" stroke-linecap="round" stroke-width="1.5">
+  <path d="m240 120 160 160m-160 0 160-160m560 160-160-160m160 0-160 160m560-160 160 160m-160 0 160-160m-1120 480 160 160m-160 0 160-160m560 160-160-160m160 0-160 160m560-160 160 160m-160 0 160-160m-1120 480 160 160m-160 0 160-160m560 160-160-160m160 0-160 160m560-160 160 160m-160 0 160-160" opacity=".15"/>
+  <path d="m240 120v960m560-960v960m560-960v960" opacity=".1"/>
+  <path d="m80 280h1760m-1760 520h1760" opacity=".1"/>
+ </g>
+ <g fill="#646cff" fill-opacity=".2">
+  <circle cx="240" cy="120" r="4"/>
+  <circle cx="800" cy="120" r="4"/>
+  <circle cx="1360" cy="120" r="4"/>
+  <circle cx="240" cy="400" r="4"/>
+  <circle cx="800" cy="400" r="4"/>
+  <circle cx="1360" cy="400" r="4"/>
+  <circle cx="240" cy="680" r="4"/>
+  <circle cx="800" cy="680" r="4"/>
+  <circle cx="1360" cy="680" r="4"/>
+  <circle cx="240" cy="960" r="4"/>
+  <circle cx="800" cy="960" r="4"/>
+  <circle cx="1360" cy="960" r="4"/>
+ </g>
+</svg>
