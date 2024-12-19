@@ -53,19 +53,19 @@ export const criticalAssets: PreloadConfig[] = [
     type: 'font',
     crossOrigin: true,
   },
-  {
+  /*{
     url: '/assets/images/hero-image.jpg',
     type: 'image',
-  },
+  },*/
   // Add other critical assets here
 ]
 
 // Non-critical assets that can be loaded after the page is interactive
 export const nonCriticalAssets: PreloadConfig[] = [
-  {
+  /*{
     url: '/assets/images/project-1.jpg',
     type: 'image',
-  },
+  },*/
   // Add other non-critical assets here
 ]
 
