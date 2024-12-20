@@ -80,18 +80,18 @@ export default defineConfig({
   build: {
     rollupOptions: {
       output: {
-        manualChunks: {
-          vendor: [
-            'react',
-            'react-dom',
-            'react-helmet-async',
-            'framer-motion',
-            'react-icons',
-          ],
-          animations: ['framer-motion'],
-          utils: ['./src/utils'],
-        },
-      },
+        manualChunks(id) {
+          if (id.includes('node_modules')) {
+            if (id.includes('framer-motion')) {
+              return 'animations';
+            }
+            if (id.includes('react')) {
+              return 'vendor';
+            }
+            return 'deps';
+          }
+        }
+      }
     },
     sourcemap: false,
     // Optimize chunks
