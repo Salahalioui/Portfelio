@@ -1,6 +1,8 @@
 import { motion, useScroll, useTransform } from 'framer-motion'
-import { useMemo } from 'react'
+import { useCallback, useMemo } from 'react'
 import Particles from 'react-tsparticles'
+import { loadFull } from "tsparticles"
+import type { Engine } from "tsparticles-engine"
 import InteractiveButton from './Interactive/InteractiveButton'
 import { Link } from 'react-scroll'
 
@@ -8,7 +10,14 @@ const Hero = () => {
   const { scrollY } = useScroll()
   const opacity = useTransform(scrollY, [0, 300], [1, 0])
 
+  const particlesInit = useCallback(async (engine: Engine) => {
+    await loadFull(engine)
+  }, [])
+
   const particlesOptions = useMemo(() => ({
+    fullScreen: {
+      enable: false
+    },
     background: {
       color: {
         value: "transparent",
@@ -51,9 +60,11 @@ const Hero = () => {
       move: {
         direction: "none" as const,
         enable: true,
-        speed: 2,
-        outModes: "bounce" as const,
+        outModes: {
+          default: "bounce" as const
+        },
         random: false,
+        speed: 2,
         straight: false,
       },
       number: {
@@ -94,7 +105,9 @@ const Hero = () => {
       <div className="absolute inset-0 z-0">
         <Particles
           id="tsparticles"
+          init={particlesInit}
           options={particlesOptions}
+          className="w-full h-full"
         />
       </div>
 
@@ -139,7 +152,7 @@ const Hero = () => {
             className="pt-4"
           >
             <Link to="projects" smooth={true} duration={500}>
-              <InteractiveButton>
+              <InteractiveButton onClick={() => {}}>
                 Check out my work!
               </InteractiveButton>
             </Link>
