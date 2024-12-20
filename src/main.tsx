@@ -2,8 +2,7 @@ import React from 'react'
 import ReactDOM from 'react-dom/client'
 import App from './App.tsx'
 import './index.css'
-import { registerServiceWorker } from './utils/serviceWorkerRegistration'
-import { initializePreloading } from './utils/assetPreloader'
+import { registerServiceWorker, initializePreloading } from './utils'
 
 // Register service worker
 registerServiceWorker()

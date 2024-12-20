@@ -20,7 +20,7 @@ const preloadAsset = ({ url, type, crossOrigin = false }: PreloadConfig): Promis
         break
       case 'font':
         link.as = 'font'
-        link.type = 'font/woff2'
+        if (crossOrigin) link.crossOrigin = 'anonymous'
         break
       case 'style':
         link.as = 'style'
@@ -30,24 +30,20 @@ const preloadAsset = ({ url, type, crossOrigin = false }: PreloadConfig): Promis
         break
     }
 
-    if (crossOrigin) {
-      link.crossOrigin = 'anonymous'
-    }
-
     link.onload = () => resolve()
-    link.onerror = () => reject(new Error(`Failed to preload: ${url}`))
+    link.onerror = reject
 
     document.head.appendChild(link)
   })
 }
 
 // Preload multiple assets
-export const preloadAssets = async (configs: PreloadConfig[]): Promise<void[]> => {
+const preloadAssets = (configs: PreloadConfig[]): Promise<void[]> => {
   return Promise.all(configs.map(preloadAsset))
 }
 
 // Critical assets that should be preloaded immediately
-export const criticalAssets: PreloadConfig[] = [
+const criticalAssets: PreloadConfig[] = [
   {
     url: '/assets/fonts/main-font.woff2',
     type: 'font',
@@ -57,35 +53,13 @@ export const criticalAssets: PreloadConfig[] = [
     url: '/assets/images/hero-image.svg',
     type: 'image',
   },
-  // Add other critical assets here
-]
-
-// Non-critical assets that can be loaded after the page is interactive
-export const nonCriticalAssets: PreloadConfig[] = [
-  /*{
-    url: '/assets/images/project-1.jpg',
-    type: 'image',
-  },*/
-  // Add other non-critical assets here
 ]
 
 // Initialize preloading
 export const initializePreloading = async () => {
   try {
-    // Preload critical assets immediately
     await preloadAssets(criticalAssets)
-
-    // Preload non-critical assets after the page is interactive
-    if ('requestIdleCallback' in window) {
-      requestIdleCallback(() => {
-        preloadAssets(nonCriticalAssets)
-      })
-    } else {
-      // Fallback for browsers that don't support requestIdleCallback
-      setTimeout(() => {
-        preloadAssets(nonCriticalAssets)
-      }, 1000)
-    }
+    console.log('Assets preloaded successfully')
   } catch (error) {
     console.error('Error preloading assets:', error)
   }
