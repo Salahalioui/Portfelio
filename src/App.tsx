@@ -48,7 +48,12 @@ function App() {
           <Meta />
           {!isMobile && <CustomCursor />}
           <ScrollFeatures />
-          {isMobile ? <MobileNavigation /> : <Navbar />}
+          <div className="hidden md:block">
+            <Navbar />
+          </div>
+          <div className="md:hidden">
+            <MobileNavigation />
+          </div>
           <Suspense fallback={<LoadingFallback />}>
             <PageTransition>
               <main className="px-4 md:px-6 lg:px-8">
